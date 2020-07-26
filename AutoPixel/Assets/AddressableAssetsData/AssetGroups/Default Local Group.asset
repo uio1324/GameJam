@@ -16,62 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 4c6fd8698c231164aab6cf6bbb8e5e0f
-  m_SerializeEntries:
-  - m_GUID: 007c234754f9cab47ad14ec78d650d4d
-    m_Address: Assets/AddressableAssets/StreamingAssets
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: 
-  - m_GUID: 132bf3fd5610ebe4bb7c033688f3c1fe
-    m_Address: Assets/AddressableAssets/Font
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: 
-  - m_GUID: 58cb61fd765888e4598c05ada54cad86
-    m_Address: Assets/AddressableAssets/Audio
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: 
-  - m_GUID: 6cd7c273968e8fa4dab1576ccd167b2b
-    m_Address: Assets/AddressableAssets/TimeLine
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: 
-  - m_GUID: 857c31ee0876ffb4a88e7d33a6bace74
-    m_Address: Assets/AddressableAssets/Prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: 
-  - m_GUID: 8dd9f6426772403498df57352c0042eb
-    m_Address: Assets/AddressableAssets/Shader
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: 
-  - m_GUID: 90d8ec5dd0b63364d88e31c86dc76a7e
-    m_Address: Assets/AddressableAssets/Atlas
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: 
-  - m_GUID: 977013ff4fd71d64a894ee6ecd86dbcd
-    m_Address: Assets/AddressableAssets/Map
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: 
-  - m_GUID: b7903931c82ecd14cab5d284606d6bf7
-    m_Address: Assets/AddressableAssets/Texture
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: 
-  - m_GUID: d62d492da6c443647a049dc8085c35f5
-    m_Address: Assets/AddressableAssets/Configs
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: 
-  - m_GUID: e6308c176f4310e4b812591415d2f311
-    m_Address: Assets/AddressableAssets/Material
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: 
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 87fde27b154d6d34884a307563624da3, type: 2}
   m_SchemaSet:
