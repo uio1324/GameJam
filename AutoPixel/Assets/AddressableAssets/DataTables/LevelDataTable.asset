@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbb0a733c91aec49a07ae301ff28058, type: 3}
+  m_Name: LevelDataTable
+  m_EditorClassIdentifier: 
+  Datas:
+  - Id: 10000
+    Level: 0
+    MapFileName: map_00
+    IsFreezeZ: 0
+    ScrollSpeed: 1150
+    InteractiveCoolDown: 1200
+    MaxHeight: 40
+    BackgroundName: 0
+    MiddlegroundName: 0
+    BornPos: 2500,5000
+    BeginSpeed: 700
+    EndHeight: 150
+    MGOffset: 0,0,0,0
+    MGScale: 900,900
+    BGOffset: 0,0
+    LightDelta: 25
+    LightDepressSpeed: 4000
+    ItemInnerParam: 30,1500,30,2000
+    ItemOuterParam: 90,4000,95,4500
+    ItemIntensityParam: 2,400,2,450
+    MgBgInnerParam: 38,200,46,400
+    MgBgOuterParam: 130,2000,135,2500
+    MgBgIntensityParam: 2,100,0,400
+    BGMusic: 1000010
+  - Id: 10001
+    Level: 1
+    MapFileName: map_01
+    IsFreezeZ: 0
+    ScrollSpeed: 1150
+    InteractiveCoolDown: 1200
+    MaxHeight: 125
+    BackgroundName: 1
+    MiddlegroundName: 1
+    BornPos: 2500,5000
+    BeginSpeed: 700
+    EndHeight: 150
+    MGOffset: 0,0,0,0
+    MGScale: 900,900
+    BGOffset: 0,0
+    LightDelta: 25
+    LightDepressSpeed: 4000
+    ItemInnerParam: 30,1500,30,2000
+    ItemOuterParam: 40,4000,40,4500
+    ItemIntensityParam: 2,400,2,450
+    MgBgInnerParam: 38,200,46,400
+    MgBgOuterParam: 70,2000,70,2500
+    MgBgIntensityParam: 2,100,0,400
+    BGMusic: 1000011
+  - Id: 10002
+    Level: 2
+    MapFileName: map_02
+    IsFreezeZ: 0
+    ScrollSpeed: 1150
+    InteractiveCoolDown: 1200
+    MaxHeight: 135
+    BackgroundName: 2
+    MiddlegroundName: 2
+    BornPos: 2500,5000
+    BeginSpeed: 700
+    EndHeight: 150
+    MGOffset: 0,0,0,0
+    MGScale: 1000, 1000
+    BGOffset: 0,0
+    LightDelta: 25
+    LightDepressSpeed: 4000
+    ItemInnerParam: 30,1500,30,2000
+    ItemOuterParam: 40,4000,45,4500
+    ItemIntensityParam: 2,400,2,450
+    MgBgInnerParam: 38,200,46,400
+    MgBgOuterParam: 70,2000,70,2500
+    MgBgIntensityParam: 2,100,0,400
+    BGMusic: 1000012
+  - Id: 10003
+    Level: 3
+    MapFileName: map_03
+    IsFreezeZ: 0
+    ScrollSpeed: 1150
+    InteractiveCoolDown: 1200
+    MaxHeight: 145
+    BackgroundName: 3
+    MiddlegroundName: 3
+    BornPos: 2500,5000
+    BeginSpeed: 700
+    EndHeight: 150
+    MGOffset: 0,0,0,0
+    MGScale: 1000, 1000
+    BGOffset: 0,0
+    LightDelta: 25
+    LightDepressSpeed: 4000
+    ItemInnerParam: 30,1500,30,2000
+    ItemOuterParam: 30,4000,30,4500
+    ItemIntensityParam: 3,400,3,450
+    MgBgInnerParam: 38,200,46,400
+    MgBgOuterParam: 130,2000,135,2500
+    MgBgIntensityParam: 2,300,0,600
+    BGMusic: 1000013

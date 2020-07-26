@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Interactive
+  - Default
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - Decoration
+  - Combiner
+  - Trigger
+  - Stone
+  - Player
+  - Ladder
+  - PlayerTrigger
+  - CameraArea
+  - Wind
+  - CameraBlock
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: background
+    uniqueID: 2478590141
+    locked: 0
+  - name: middleground
+    uniqueID: 746817845
+    locked: 0
+  - name: mapStone
+    uniqueID: 4039645085
+    locked: 0
+  - name: ladder
+    uniqueID: 3467855163
+    locked: 0
+  - name: logicItem
+    uniqueID: 1261894019
+    locked: 0
+  - name: mapDecoration
+    uniqueID: 1898971627
+    locked: 0
+  - name: player
+    uniqueID: 3534715703
+    locked: 0
+  - name: Particle
+    uniqueID: 1806030511
+    locked: 0

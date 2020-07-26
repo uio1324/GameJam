@@ -1,0 +1,447 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b08c4bc029d864bac1aeef571aa2b2, type: 3}
+  m_Name: MapItemDataTable
+  m_EditorClassIdentifier: 
+  Datas:
+  - Id: 20000000
+    Name: MapStone
+    AtlasName: StoneAtlas
+    SpriteName: StuckStone
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: Stone
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000001
+    Name: MapDecoration
+    AtlasName: StoneAtlas
+    SpriteName: 
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: Decoration
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000002
+    Name: MapItemCombiner
+    AtlasName: StoneAtlas
+    SpriteName: 
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 1
+    DisplayName: 
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 1350
+  - Id: 20000003
+    Name: MapTriangleStone
+    AtlasName: StoneAtlas
+    SpriteName: UpStone_Tri
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 1
+    DisplayName: Triangle
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 1350
+  - Id: 20000004
+    Name: MapLadder
+    AtlasName: StoneAtlas
+    SpriteName: Ladder1
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: Ladder
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 1350
+  - Id: 20000005
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Prick1
+    HorizontalSpeed: 0
+    IsInteractive: 1
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: Logic
+    EventId: 1001
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000006
+    Name: MapStone
+    AtlasName: StoneAtlas
+    SpriteName: InterStone
+    HorizontalSpeed: 2000
+    IsInteractive: 1
+    Size: 128
+    CanMoveUpward: 1
+    DisplayName: InterStone
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 1350
+  - Id: 20000007
+    Name: MapStone
+    AtlasName: StoneAtlas
+    SpriteName: UpStone
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 1
+    DisplayName: UpStone
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 1350
+  - Id: 20000008
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: 
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: TimelineTrigger
+    EventId: 1002
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000009
+    Name: MapStone
+    AtlasName: StoneAtlas
+    SpriteName: BreakableStone
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 1
+    DisplayName: BreakableStone
+    EventId: 0
+    CanBeBreak: 1
+    VerticalSpeed: 1350
+  - Id: 20000010
+    Name: MapStone
+    AtlasName: StoneAtlas
+    SpriteName: InterStone_Rune
+    HorizontalSpeed: 2000
+    IsInteractive: 1
+    Size: 128
+    CanMoveUpward: 1
+    DisplayName: InterStone_Rune
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 1350
+  - Id: 20000011
+    Name: MapStone
+    AtlasName: StoneAtlas
+    SpriteName: InterStone_Sign_Grass
+    HorizontalSpeed: 2000
+    IsInteractive: 1
+    Size: 128
+    CanMoveUpward: 1
+    DisplayName: InterStone_Sign_Grass
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 1350
+  - Id: 20000012
+    Name: MapStone
+    AtlasName: StoneAtlas
+    SpriteName: InterStone_G1
+    HorizontalSpeed: 2000
+    IsInteractive: 1
+    Size: 128
+    CanMoveUpward: 1
+    DisplayName: InterStone_G1
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 1350
+  - Id: 20000013
+    Name: MapStone
+    AtlasName: StoneAtlas
+    SpriteName: InterStone_G2
+    HorizontalSpeed: 2000
+    IsInteractive: 1
+    Size: 128
+    CanMoveUpward: 1
+    DisplayName: InterStone_G2
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 1350
+  - Id: 20000014
+    Name: MapStone
+    AtlasName: StoneAtlas
+    SpriteName: StuckStone_G1
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: StuckStone_G1
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000015
+    Name: MapStone
+    AtlasName: StoneAtlas
+    SpriteName: StuckStone_G2
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: StuckStone_G2
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000016
+    Name: MapStone
+    AtlasName: StoneAtlas
+    SpriteName: UpStone_G1
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 1
+    DisplayName: UpStone_G1
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 1350
+  - Id: 20000017
+    Name: MapStone
+    AtlasName: StoneAtlas
+    SpriteName: UpStone_G2
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 1
+    DisplayName: UpStone_G2
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 1350
+  - Id: 20000018
+    Name: MapTriangleStone
+    AtlasName: StoneAtlas
+    SpriteName: InterStone_Tri_G
+    HorizontalSpeed: 2000
+    IsInteractive: 1
+    Size: 128
+    CanMoveUpward: 1
+    DisplayName: InterStone_Tri_G
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 1350
+  - Id: 20000019
+    Name: MapTriangleStone
+    AtlasName: StoneAtlas
+    SpriteName: UpStone_Tri_G
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 1
+    DisplayName: UpStone_Tri_G
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 1350
+  - Id: 20000020
+    Name: MapTriangleStone
+    AtlasName: StoneAtlas
+    SpriteName: StuckStone_Tri
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: StuckStone_Tri
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 1350
+  - Id: 20000021
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: NotSave
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: SavePoint
+    EventId: 1000
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000022
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Star
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: Star
+    EventId: 1004
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000023
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Sentence1
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: FontStone1
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000024
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Sentence2
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: FontStone2
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000025
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Sentence3
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: FontStone3
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000026
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Sentence4
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: FontStone4
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000027
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Sentence5
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: FontStone5
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000028
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Sentence6
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: FontStone6
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000029
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Sentence7
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: FontStone7
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000030
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Sentence8
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: FontStone8
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000031
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Sentence9
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: FontStone9
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000032
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Sentence10
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: FontStone10
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000033
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Sentence11
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: FontStone11
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000034
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Sentence12
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: FontStone12
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0
+  - Id: 20000035
+    Name: MapLogicItem
+    AtlasName: StoneAtlas
+    SpriteName: Sentence13
+    HorizontalSpeed: 0
+    IsInteractive: 0
+    Size: 128
+    CanMoveUpward: 0
+    DisplayName: FontStone13
+    EventId: 0
+    CanBeBreak: 0
+    VerticalSpeed: 0

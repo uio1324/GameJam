@@ -1,0 +1,9 @@
+AutoPixel/Library/
+AutoPixel/Temp/
+AutoPixel/.idea/
+AutoPixel/.vs/
+*.sln
+*.csproj
+*.user
+AutoPixel/obj/
+AutoPixel/iosProj/

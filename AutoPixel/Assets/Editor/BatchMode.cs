@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
+using UnityEngine;
+using Editor.DataTableConverter;
+
+public class Batchmode {
+    static List<string> levels = new List<string>();
+    private static string password = "autopixel";
+    [MenuItem("Build/BuildAndroid")]
+    public static void BuildAndroid()
+    {
+        DataTableConverter.ConvertDataTable();
+
+        PlayerSettings.Android.keystorePass = password;
+        PlayerSettings.Android.keyaliasPass = password;
+        foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
+        {
+            if (!scene.enabled)
+            {
+                continue;
+            }
+            levels.Add(scene.path);
+        }
+
+        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+        var res = BuildPipeline.BuildPlayer(levels.ToArray(), "android.apk", BuildTarget.Android, BuildOptions.None);
+        if (res.summary.totalErrors > 0)
+        {
+            throw new Exception();
+        }
+    }
+
+    [MenuItem("Build/BuildiOS")]
+    public static void BuildiOS()
+    {
+        DataTableConverter.ConvertDataTable();
+        string privateScriptSymbols = Environment.GetEnvironmentVariable("ScriptingDefineSymbols");
+        Debug.Log(privateScriptSymbols);
+        privateScriptSymbols = privateScriptSymbols?.Replace('|', ';');
+        PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.iOS, privateScriptSymbols);
+        PlayerSettings.bundleVersion = "0.0.1";
+        BuildOptions ops = BuildOptions.None;
+
+        foreach (var editorBuildSettingsScene in EditorBuildSettings.scenes)
+        {
+            if (!editorBuildSettingsScene.enabled)
+            {
+                continue;
+            }
+            levels.Add(editorBuildSettingsScene.path);
+        }
+        
+        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
+        BuildPipeline.BuildPlayer(levels.ToArray(), "iosProj", BuildTarget.iOS, ops);
+    }
+}
