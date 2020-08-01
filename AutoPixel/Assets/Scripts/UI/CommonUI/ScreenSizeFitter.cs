@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ScreenSizeFitter : MonoBehaviour
 {
@@ -19,11 +17,5 @@ public class ScreenSizeFitter : MonoBehaviour
             var aspect = ((float)height / width) / (1920f / 1080f);
             camera.orthographicSize *= aspect;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

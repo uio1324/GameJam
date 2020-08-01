@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Logic.Core;
-using Logic.Core.Scenes;
-using Logic.Manager.SceneMgr;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 

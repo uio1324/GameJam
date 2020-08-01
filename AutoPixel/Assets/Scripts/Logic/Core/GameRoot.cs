@@ -3,22 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Logic.Common;
 using Logic.Common.Singleton;
 using Logic.Manager;
-using Logic.Manager.PrefabMgr;
-using Logic.Map.LevelMap;
 using UnityEngine;
-using Logic.Manager.InputManager;
-using UI.CommonUI;
 
 namespace Logic.Core
 {
 	public class GameRoot : MonoBehaviour
 	{
 		public static GameRoot m_instance;
-		public int m_levelId;//在switchscene至gamescene时，先在这里写入关卡id，后续可能重构这里，例如给switchscene方法加入可变参
-		private List<ISingleton> m_managers;
+		private List<IManager> m_managers;
 		private SortedDictionary<uint, Type> m_preInitManager;
 
 		/// <summary>
@@ -107,10 +101,9 @@ namespace Logic.Core
 				yield return manager.PreInit();
 				AddManager(manager);
 			}
-            InputManager.Instance.AddCallback(KeyCode.Escape, OnPressEscape);
 		}
 
-		public void AddManager(ISingleton manager)
+		public void AddManager(IManager manager)
 		{
 			m_managers.Add(manager);
 		}
@@ -118,7 +111,7 @@ namespace Logic.Core
 		{
 			DontDestroyOnLoad(this);
 			m_instance = this;
-			m_managers = new List<ISingleton>();
+			m_managers = new List<IManager>();
 			m_preInitManager = new SortedDictionary<uint, Type>();
 			PreInitLogicMgr();
 			Application.targetFrameRate = 60;
@@ -133,48 +126,12 @@ namespace Logic.Core
 			}
 		}
 
-		private void LateUpdate()
-		{
-			foreach (var m in m_managers)
-			{
-				m.LateUpdate();
-			}
-		}
-
 		private void OnDestroy()
 		{
 			foreach (var m in m_managers)
 			{
 				m.OnDestroy();
 			}
-            InputManager.Instance.RemoveCallback(KeyCode.Escape, OnPressEscape);
-        }
-
-        private void OnPressEscape()
-        {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-            List<UiOptionPair> optionPairs = new List<UiOptionPair>();
-	        optionPairs.Add(new UiOptionPair
-	        {
-		        Callback = Application.Quit,
-		        Title = "确定"
-	        });
-	        
-	        optionPairs.Add(new UiOptionPair
-	        {
-		        Callback = EmptyFunc,
-		        Title = "取消"
-	        });
-	        
-	        SceneUiBase.Instance.ShowOptionPanel(optionPairs, "确认退出游戏吗?");
-#endif
-        }
-
-        private void EmptyFunc()
-        {
-	        
-        }
-    }
+		}
+	}
 }

@@ -1,15 +1,9 @@
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-
 namespace Logic.Common.Singleton
 {
     public interface ISingleton
     {
         void OnAwake();
         void OnDestroy();
-        void Update();
-        void LateUpdate();
     }
 
     public abstract class Singleton<T> : ISingleton where T : Singleton<T>, new()

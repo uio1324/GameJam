@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System;
 using ScriptableObjects.CommonDefine;
 using ScriptableObjects.ScriptableObjectsAttribute;
