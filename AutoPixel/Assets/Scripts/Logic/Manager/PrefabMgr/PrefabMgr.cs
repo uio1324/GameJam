@@ -41,7 +41,7 @@ namespace Logic.Manager.PrefabMgr
             return null;
         }
 
-        public IEnumerator PreInit()
+        public override IEnumerator PreInit()
         {
             var paths = GetMarkedPath<PrefabPathAttribute>();
             foreach (var path in paths)

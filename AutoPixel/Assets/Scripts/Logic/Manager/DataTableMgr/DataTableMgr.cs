@@ -12,12 +12,12 @@ namespace Logic.Manager.DataTableMgr
     [ManagerDefine(0, true)]
     public sealed class DataTableMgr : Manager<DataTableMgr>, IManager
     {
-        private readonly Dictionary<Type, ConfigBase> m_configs;
+        private readonly Dictionary<string, ConfigBase> m_configs;
         private readonly Dictionary<Type, DataTableBase> m_dataTables;
 
         public DataTableMgr()
         {
-            m_configs = new Dictionary<Type, ConfigBase>();
+            m_configs = new Dictionary<string, ConfigBase>();
             m_dataTables = new Dictionary<Type, DataTableBase>();
         }
         /// <summary>
@@ -68,50 +68,31 @@ namespace Logic.Manager.DataTableMgr
 
         private void LoadConfig()
         {
-            var configs = Resources.LoadAll<ScriptableObject>(PathDefine.CONFIG_PATH);
-            var addMethod = m_configs.GetType().GetMethod("Add");
-            if (addMethod == null)
-            {
-                throw new Exception("未找到Add方法");
-            }
+            var configs = Resources.LoadAll<ConfigBase>(Application.dataPath);
             foreach (var config in configs)
             {
-                var configType = config.GetType();
-                var configBase = config as ConfigBase;
-                if (m_configs.ContainsKey(configType))
+                if (m_configs.ContainsKey(config.name))
                 {
                     m_configs.Clear();
-                    throw new Exception($"配置表{configType}表格重复，请检查Configs文件夹下是否有类型相同的不同名配置表");
+                    Debug.LogError($"配置表{config.name}表格重复，请检查Configs文件夹下是否有同名配置表");
+                    continue;
                 }
 
-                var attribute = ExtractDataByAttribute<DataAttribute>(config, out var outValue);
-                if (outValue != null)
-                {
-                    var subType = attribute.m_dataType;
-                    var configMethod = ExtractMethodInfo(configType, "ConstructConfig", true, false);
-                    configMethod.MakeGenericMethod(subType).Invoke(config, new []{outValue});
-                    m_configs.Add(configType, configBase);
-                }
+                m_configs[config.name] = config;
             }
         }
         
         private void LoadDataTable()
         {
             
-            var dataTables = Resources.LoadAll<ScriptableObject>(PathDefine.DATA_TABLE_PATH);
-            var addMethod = m_dataTables.GetType().GetMethod("Add");
-            if (addMethod == null)
-            {
-                throw new Exception("未找到Add方法");
-            }
+            var dataTables = Resources.LoadAll<DataTableBase>(PathDefine.DATA_TABLE_PATH);
             foreach (var dataTable in dataTables)
             {
                 var dataTableType = dataTable.GetType();
-                var dataTableBase = dataTable as DataTableBase;
+                var dataTableBase = dataTable;
                 if (m_dataTables.ContainsKey(dataTableType))
                 {
-                    m_dataTables.Clear();
-                    throw new Exception($"数据表{dataTableType}表格重复，请检查DataTables文件夹下是否有类型相同的不同名配置表");
+                    Debug.LogError($"数据表{dataTableType}表格重复，请检查DataTables文件夹下是否有类型相同的不同名配置表");
                 }
 
                 var attribute = ExtractDataByAttribute<DataAttribute>(dataTable, out var outValue);
@@ -125,50 +106,18 @@ namespace Logic.Manager.DataTableMgr
             }
         }
 
-        private TConfigBase GetConfig<TConfigBase>() where TConfigBase : ConfigBase
+        public TConfigBase GetConfig<TConfigBase>(string variant = "") where TConfigBase : ConfigBase
         {
-            if (m_configs.TryGetValue(typeof(TConfigBase), out var config))
+            var key = $"{typeof(TConfigBase).Name}{variant}";
+            if (m_configs.TryGetValue(key, out var config))
             {
                 return config as TConfigBase;
             }
 
-            Debug.LogError($"配置表 : {typeof(TConfigBase)} 未找到，检查configs文件夹下是否有该类或者是否搞混了Config和DataTable");
+            Debug.LogError($"配置表 : {key} 未找到");
             return null;
         }
 
-        /// <summary>
-        /// 直接获取整张配置表
-        /// </summary>
-        /// <param name="outValue"></param>
-        /// <typeparam name="TConfigBase">配置表类型</typeparam>
-        /// <returns></returns>
-        public bool TryGetConfig<TConfigBase>(out TConfigBase outValue) where TConfigBase : ConfigBase
-        {
-            outValue = GetConfig<TConfigBase>();
-            return outValue != null;
-        }
-
-        /// <summary>
-        /// 通过给定的id和类型获取配置行
-        /// </summary>
-        /// <param name="id">指定id</param>
-        /// <param name="outValue"></param>
-        /// <typeparam name="TConfigBase">配置表的类型</typeparam>
-        /// <typeparam name="TDataModel">配置行的类型</typeparam>
-        /// <returns></returns>
-        public bool TryGetConfigById<TConfigBase, TDataModel>(int id, out TDataModel outValue)
-            where TConfigBase : ConfigBase where TDataModel : DataModel
-        {
-            if (TryGetConfig(out TConfigBase config))
-            {
-                outValue = config.GetConfigById<TDataModel>(id);
-                return outValue != null;
-            }
-            
-            outValue = null;
-            return false;
-        }
-        
         private TDataTableBase GetDataTable<TDataTableBase>() where TDataTableBase : DataTableBase
         {
             if (m_dataTables.TryGetValue(typeof(TDataTableBase), out var dataTableBase))
@@ -213,24 +162,11 @@ namespace Logic.Manager.DataTableMgr
             return false;
         }
 
-        public IEnumerator PreInit()
+        public override IEnumerator PreInit()
         {
             LoadConfig();
             LoadDataTable();
             yield return null;
-        }
-        
-        /// <summary>
-        /// dataTableMgr的内部静态类，用于提供所需要的宏
-        /// </summary>
-        public static class DataTableMgrDefine
-        {
-            /// <summary>
-            /// mapItem表中ID的最低值，可以理解为基址
-            /// </summary>
-            public const int MAP_ITEM_ID_BASE = 20000000;
-
-            public const int LEVEL_ID_BASE = 10000;
         }
     }
 }

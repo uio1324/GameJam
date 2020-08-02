@@ -54,7 +54,7 @@ namespace Logic.Manager.SceneMgr
             return m_curScene.m_sceneName;
         }
 
-        public IEnumerator PreInit()
+        public override IEnumerator PreInit()
         {
             yield return null;
         }

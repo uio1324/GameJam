@@ -8,8 +8,16 @@ namespace Logic.Manager
         IEnumerator PreInit();
         void Update();
     }
-    public abstract class Manager<T> : Singleton<T> where T :Singleton<T>, IManager, new()
+    public abstract class Manager<T> : Singleton<T>, IManager where T :Manager<T>, new()
     {
-        
+        public virtual IEnumerator PreInit()
+        {
+            yield return null;
+        }
+
+        public virtual void Update()
+        {
+            
+        }
     }
 }

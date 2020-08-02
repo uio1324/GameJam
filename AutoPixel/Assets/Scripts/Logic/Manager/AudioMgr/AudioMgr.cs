@@ -113,7 +113,7 @@ namespace Logic.Manager.AudioMgr
             //m_playingAudio.Remove(audioSource);
         }
 
-        public IEnumerator PreInit()
+        public override IEnumerator PreInit()
         {
             var audios = Resources.LoadAll<AudioClip>("Audio/");
             foreach (var audioClip in audios)

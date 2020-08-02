@@ -14,7 +14,7 @@ public class Batchmode {
 
         PlayerSettings.Android.keystorePass = password;
         PlayerSettings.Android.keyaliasPass = password;
-        foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
+        foreach (var scene in EditorBuildSettings.scenes)
         {
             if (!scene.enabled)
             {
@@ -35,12 +35,12 @@ public class Batchmode {
     public static void BuildiOS()
     {
         DataTableConverter.ConvertDataTable();
-        string privateScriptSymbols = Environment.GetEnvironmentVariable("ScriptingDefineSymbols");
+        var privateScriptSymbols = Environment.GetEnvironmentVariable("ScriptingDefineSymbols");
         Debug.Log(privateScriptSymbols);
         privateScriptSymbols = privateScriptSymbols?.Replace('|', ';');
         PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.iOS, privateScriptSymbols);
         PlayerSettings.bundleVersion = "0.0.1";
-        BuildOptions ops = BuildOptions.None;
+        var ops = BuildOptions.None;
 
         foreach (var editorBuildSettingsScene in EditorBuildSettings.scenes)
         {

@@ -17,32 +17,5 @@ namespace ScriptableObjects.CommonDefine
 
             return null;
         }
-
-        public void ConstructConfig<T>(List<T> dataModels) where T : DataModel
-        {
-            if (dataModels == null)
-            {
-                return;
-            }
-            if (m_dataModels == null)
-            {
-                m_dataModels = new Dictionary<int, DataModel>();
-            }
-            else
-            {
-                m_dataModels.Clear();
-            }
-
-            foreach (var dataModel in dataModels)
-            {
-                var id = dataModel.Id;
-                if (m_dataModels.ContainsKey(id))
-                {
-                    m_dataModels.Clear();
-                    throw new Exception($"{GetType()}表中行键值重复 ： {id}");
-                }
-                m_dataModels.Add(id, dataModel);
-            }
-        }
     }
 }

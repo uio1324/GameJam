@@ -28,7 +28,6 @@ namespace Logic.Common.Singleton
             {
                 s_instance = new T();
                 s_instance.OnAwake();
-                //Debug.Log("单例 ： " + typeof(T) + "完成实例化");
             }
         }
 
@@ -38,16 +37,6 @@ namespace Logic.Common.Singleton
         }
 
         public virtual void OnDestroy()
-        {
-            
-        }
-
-        public virtual void Update()
-        {
-            
-        }
-
-        public virtual void LateUpdate()
         {
             
         }

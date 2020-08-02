@@ -38,8 +38,7 @@ namespace ScriptableObjects.CommonDefine
                 var id = dataModel.Id;
                 if (m_dataModels.ContainsKey(id))
                 {
-                    m_dataModels.Clear();
-                    throw new Exception($"{GetType()}表中行键值重复 ： {id}");
+                    Debug.LogError($"{GetType()}表中行键值重复 ： {id}");
                 }
                 m_dataModels.Add(id, dataModel);
             }

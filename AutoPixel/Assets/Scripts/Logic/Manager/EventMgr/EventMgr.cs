@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Logic.Manager.EventMgr
 {
     [ManagerDefine(50, false)]
-    public sealed class EventMgr : Manager<EventMgr> , IManager
+    public sealed class EventMgr : Manager<EventMgr>
     {
         private Dictionary<int, HashSet<Action>> m_callbacks;
         public override void OnAwake()
@@ -14,7 +14,7 @@ namespace Logic.Manager.EventMgr
             m_callbacks = new Dictionary<int, HashSet<Action>>();
         }
 
-        public IEnumerator PreInit()
+        public override IEnumerator PreInit()
         {
             yield return null;
         }
@@ -34,7 +34,7 @@ namespace Logic.Manager.EventMgr
             }
             else
             {
-                HashSet<Action> hashSet = new HashSet<Action> {callback};
+                var hashSet = new HashSet<Action> {callback};
                 m_callbacks.Add(eventType, hashSet);
             }
         }
