@@ -127,17 +127,5 @@ namespace Logic.Manager.AudioMgr
 
     public class AudioDefine
     {
-        public const int AudioDefineBase = 1000000;
-        public const int CommonClick = 1000001;
-        public const int Jump = 1000002;
-        public const int Control = 1000003;
-        public const int Death = 1000004;
-        public const int StoneBreak = 1000005;
-        public const int Bird = 1000006;
-        public const int Collide = 1000007;
-        public const int Rotate = 1000008;
-        public const int Wind = 1000009;
-        public const int MainSceneBgm = 1000014;
-        public const int FillLight = 1000015;
     }
 }

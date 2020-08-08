@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Excel;
+using ScriptableObjects.CommonDefine;
 using ScriptableObjects.ScriptableObjectsAttribute;
 using UnityEditor;
 using UnityEngine;
@@ -11,8 +12,15 @@ namespace Editor.DataTableConverter
 {
     public static class DataTableConverter
     {
+        private static readonly Dictionary<Type, Func<string, object>> S_TryParseMethodMap = new Dictionary<Type, Func<string, object>>
+        {
+            {typeof(int), s => int.TryParse(s, out var result) ? result : 0},
+            {typeof(string), s => s},
+            {typeof(double), s => double.TryParse(s, out var result) ? result : 0.0},
+            {typeof(float), s => float.TryParse(s, out var result) ? result : 0.0f}
+        };
         private static T GetSpecifyAttributeFromType<T>(Type type, out FieldInfo outFieldInfo,
-            string fieldInfoParam = null) where T : PropertyAttribute
+            string fieldInfoParam = null) where T : Attribute
         {
             var fieldInfos = type.GetFields();
             foreach (var f in fieldInfos)
@@ -40,21 +48,9 @@ namespace Editor.DataTableConverter
             for (var i = 0; i < excelFiles.Length; i++) // 遍历Excel
             {
                 var excelFile = excelFiles[i];
-                var fileType = "";
-                if (excelFile.Contains("DataTable.xlsx"))
+                if (!excelFile.Contains("DataTable.xlsx"))
                 {
-                    fileType = "DataTables";
-                }
-
-                if (excelFile.Contains("Config.xlsx"))
-                {
-                    fileType = "Configs";
-                }
-
-                if ("".Equals(fileType))
-                {
-                    Debug.Log($"文件 ：{excelFile}命名有误，应以Config或DataTable结尾，或非xlsx后缀文件");
-                    continue;
+                    Debug.LogWarning($"文件： {excelFile} 并非以DataTable.xlsx为后缀，可能并非配置表");
                 }
 
                 var stream = File.Open(excelFile, FileMode.Open, FileAccess.Read);
@@ -68,15 +64,15 @@ namespace Editor.DataTableConverter
                     var columns = tables[j].Columns;
                     var rows = tables[j].Rows;
                     var tableName = tables[j].TableName;
-                    var config = ScriptableObject.CreateInstance(tableName);
+                    var config = (DataTableBase)ScriptableObject.CreateInstance(tableName);
                     if (config == null)
                     {
-                        Debug.Log($"未找到{tableName}类，请于Configs文件夹下手动添加类，需继承自Scriptable Object，且字段需一一对应");
+                        Debug.LogError($"未找到{tableName}类，请于Configs文件夹下手动添加类，需继承自Scriptable Object，且字段需一一对应");
                         continue;
                     }
 
                     var propertyNames = new List<string>();
-                    var dataType = GetSpecifyAttributeFromType<DataAttribute>(config.GetType(), out var dataFieldInfo)
+                    var dataType = GetSpecifyAttributeFromType<DataModelDescAttribute>(config.GetType(), out var dataFieldInfo)
                         .m_dataType;
                     if (dataFieldInfo == null || dataType == null)
                     {
@@ -99,37 +95,29 @@ namespace Editor.DataTableConverter
                         else
                         {
                             var data = Activator.CreateInstance(dataType);
+                            var constructResultFlag = true;
                             for (var l = 0; l < columns.Count; l++) // 遍历列
                             {
                                 var value = rows[k][l].ToString();
-                                var fieldType =
-                                    GetSpecifyAttributeFromType<SpecifyFieldTypeAttribute>(dataType, out var fieldInfo,
-                                        propertyNames[l]).m_fieldType;
-                                if (fieldInfo == null || fieldType == null)
+                                var fieldInfo = data.GetType().GetField(propertyNames[l]);
+                                if (!S_TryParseMethodMap.TryGetValue(fieldInfo.FieldType, out var parseResult))
                                 {
+                                    constructResultFlag = false;
                                     continue;
                                 }
-
-                                if (fieldType == typeof(int))
-                                {
-                                    fieldInfo.SetValue(data, int.TryParse(value, out var outValue) ? outValue : 0);
-                                }
-                                else if (fieldType == typeof(string))
-                                {
-                                    fieldInfo.SetValue(data, value);
-                                }
-                                else if (fieldType == typeof(float))
-                                {
-                                    fieldInfo.SetValue(data, float.TryParse(value, out var outValue) ? outValue : 0.0);
-                                }
+                                
+                                fieldInfo.SetValue(data, parseResult(value));
                             }
 
-                            iList.Add(data);
+                            if (constructResultFlag)
+                            {
+                                iList.Add(data);
+                            }
                         }
                     }
 
                     dataFieldInfo.SetValue(config, iList);
-                    var resultPath = $"{Application.dataPath + "/Resources/" + fileType}/{tableName}.asset";
+                    var resultPath = $"{Application.dataPath}/Resources/DataTables/{tableName}.asset";
                     var tempPath = $"Assets/{tableName}.asset";
                     AssetDatabase.CreateAsset(config, tempPath);
                     if (File.Exists(resultPath))
@@ -137,7 +125,7 @@ namespace Editor.DataTableConverter
                         File.Delete(resultPath);
                     }
 
-                    File.Move(tempPath, resultPath);
+                    File.Move($"{Application.dataPath}/{tableName}.asset", resultPath);
                 }
 
                 excelDataReader.Close();

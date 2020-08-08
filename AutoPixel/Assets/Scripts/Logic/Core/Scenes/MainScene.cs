@@ -1,5 +1,4 @@
 using System.Collections;
-using UI.CommonUI;
 using UnityEngine;
 
 namespace Logic.Core.Scenes
@@ -9,7 +8,6 @@ namespace Logic.Core.Scenes
     {
         public override IEnumerator OnEnter()
         {
-            SceneUi = GameObject.Find("Canvas").GetComponentInChildren<SceneUiBase>();
             yield return null;
         }
     }

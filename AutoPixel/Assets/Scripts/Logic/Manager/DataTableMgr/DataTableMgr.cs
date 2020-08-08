@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Reflection;
 using Logic.Common.Define;
 using ScriptableObjects.CommonDefine;
+using ScriptableObjects.ScriptableObjectsAttribute;
 using UnityEngine;
-using DataAttribute = ScriptableObjects.ScriptableObjectsAttribute.DataAttribute;
 
 namespace Logic.Manager.DataTableMgr
 {
     [ManagerDefine(0, true)]
-    public sealed class DataTableMgr : Manager<DataTableMgr>, IManager
+    public sealed class DataTableMgr : Manager<DataTableMgr>
     {
         private readonly Dictionary<string, ConfigBase> m_configs;
         private readonly Dictionary<Type, DataTableBase> m_dataTables;
@@ -27,7 +27,7 @@ namespace Logic.Manager.DataTableMgr
         /// <param name="outObject">输出数据</param>
         /// <typeparam name="T">指定的属性</typeparam>
         /// <returns>返回属性，用于获取属性中的字段</returns>
-        private T ExtractDataByAttribute<T>(object o, out object outObject) where T : DataAttribute
+        private T ExtractDataByAttribute<T>(object o, out object outObject) where T : DataModelDescAttribute
         {
             var fieldInfos = o.GetType().GetFields();
             foreach (var fieldInfo in fieldInfos)
@@ -95,7 +95,7 @@ namespace Logic.Manager.DataTableMgr
                     Debug.LogError($"数据表{dataTableType}表格重复，请检查DataTables文件夹下是否有类型相同的不同名配置表");
                 }
 
-                var attribute = ExtractDataByAttribute<DataAttribute>(dataTable, out var outValue);
+                var attribute = ExtractDataByAttribute<DataModelDescAttribute>(dataTable, out var outValue);
                 if (outValue != null)
                 {
                     var subType = attribute.m_dataType;

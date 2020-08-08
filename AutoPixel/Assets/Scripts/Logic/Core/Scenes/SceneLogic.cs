@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Reflection;
-using UI.CommonUI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,11 +9,6 @@ namespace Logic.Core.Scenes
 {
     public abstract class SceneLogic
     {
-        public SceneUiBase SceneUi
-        {
-            get;
-            protected set;
-        }
         public SceneLogic()
         {
             m_sceneName = ExtractSceneNameByType(GetType());

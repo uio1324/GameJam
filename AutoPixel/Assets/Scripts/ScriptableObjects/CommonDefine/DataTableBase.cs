@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ScriptableObjects.CommonDefine
 {
-    public abstract class DataTableBase: ScriptableObject 
+    public abstract class DataTableBase: ScriptableObject
     {
         [NonSerialized]
         private Dictionary<int, DataModel> m_dataModels;
@@ -18,7 +18,7 @@ namespace ScriptableObjects.CommonDefine
             return null;
         }
 
-        public void ConstructDataTable<T>(List<T> dataModels) where T : DataModel
+        public virtual void ConstructDataTable<T>(List<T> dataModels) where T : DataModel
         {
             if (dataModels == null)
             {

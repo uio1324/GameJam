@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ScriptableObjects.CommonDefine
 {
-    public class ConfigBase : ScriptableObject
+    public abstract class ConfigBase : ScriptableObject
     {
         [NonSerialized]
         private Dictionary<int, DataModel> m_dataModels;

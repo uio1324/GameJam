@@ -2,9 +2,8 @@ using ScriptableObjects.ScriptableObjectsAttribute;
 
 namespace ScriptableObjects.CommonDefine
 {
-    public abstract class DataModel
+    public class DataModel
     {
-        [SpecifyFieldType(typeof(int))]
         public int Id;
     }
 }
