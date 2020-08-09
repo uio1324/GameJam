@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Logic.Common.Singleton;
+using Logic.Core.Scenes;
 using Logic.Manager;
+using Logic.Manager.SceneMgr;
 using UnityEngine;
 
 namespace Logic.Core
@@ -101,6 +103,8 @@ namespace Logic.Core
 				yield return manager.PreInit();
 				AddManager(manager);
 			}
+
+			yield return SceneMgr.Instance.SwitchScene(typeof(MainScene));
 		}
 
 		public void AddManager(IManager manager)
