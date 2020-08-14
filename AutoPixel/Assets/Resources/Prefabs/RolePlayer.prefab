@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2750093421521563572}
   - component: {fileID: 6406155470072401810}
   - component: {fileID: 8158745832998650489}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RolePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,10 +29,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4089198685975940059}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -154.72531, y: 79.731995, z: 196.94559}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6092308861153440816}
+  - {fileID: 3110545956611327352}
+  - {fileID: 8575945726792948206}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,6 +50,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877e2db81d7e472bb02f76958f36f897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Velocity: 1
+  PlatformController: {fileID: 0}
+  BaitRoot: {fileID: 0}
+  BaitTemplate: {fileID: 3375231039525524355, guid: 41086809eb964064792af5c5adcd9881,
+    type: 3}
+  State: 0
+  GameHud: {fileID: 0}
+  BaitHolder: {fileID: 0}
+  CoolDown: 3
+  MaxPressingTime: 2
+  MaxThrowDistance: 2.828
+  MinThrowDistance: 4
 --- !u!50 &1657322775488236763
 Rigidbody2D:
   serializedVersion: 4
@@ -199,6 +213,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 143cb6c2-6d77-4e14-b67a-397e4dec3054
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7392782726905266112}
+        m_TargetAssemblyTypeName: Logic.Core.PlayerController.PlayerController, Assembly-CSharp
+        m_MethodName: OnGrab
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 55132c75-bb5e-4b24-89cf-215bc5fcb204
+    m_ActionName: Player/Grab[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -265,7 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6092308861153440816}
   - component: {fileID: 7009436822799639593}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: aim_point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,3 +367,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6178987898539195184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8575945726792948206}
+  m_Layer: 18
+  m_Name: ground_trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8575945726792948206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6178987898539195184}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7821661775407424847}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8512467131276977687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3110545956611327352}
+  m_Layer: 18
+  m_Name: bait_trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3110545956611327352
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8512467131276977687}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7821661775407424847}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

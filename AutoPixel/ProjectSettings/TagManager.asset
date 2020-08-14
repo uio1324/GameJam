@@ -16,16 +16,16 @@ TagManager:
   - 
   - 
   - 
-  - Decoration
-  - Combiner
-  - Trigger
-  - Stone
+  - 
+  - 
+  - 
+  - 
   - Player
-  - Ladder
-  - PlayerTrigger
-  - CameraArea
-  - Wind
-  - CameraBlock
+  - Ground
+  - PlayerXBait
+  - Block
+  - Bait
+  - PlayerXGround
   - 
   - 
   - 
